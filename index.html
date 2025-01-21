@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Website</title>
+    <style>
+        /* Resetting body and general styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Helps with consistent padding and margin */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Soft blue background */
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #00796b; /* Teal color for header */
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 50px 0;
+        }
+
+        .home-content, .section {
+            text-align: center;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #00796b;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #004d40;
+        }
+
+        /* Table Styling */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #00796b;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Responsive Design - Media Queries */
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: row;
+            }
+
+            .btn {
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+
+            .home-content, .section {
+                padding: 20px;
+                font-size: 1rem;
+            }
+
+            th, td {
+                font-size: 1rem;
+                padding: 12px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+        }
+
+        /* For Tablet and Mobile */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .home-content, .section {
+                padding: 20px;
+                font-size: 1rem;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                font-size: 1rem;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+        }
+
+        /* For Mobile (iPhone XR and smaller) */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .home-content, .section {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .home-content, .section {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+
+            pre {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Documentation Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#setup">Setup Guide</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <div class="home-content">
+            <h2>Welcome to the Documentation Portal</h2>
+            <p>Explore our guides and resources to simplify your projects. Get started quickly with easy setup instructions and troubleshooting tips.</p>
+            <a href="documentation.html" class="btn">Go to Documentation</a>
+        </div>
+
+        <section id="features" class="section">
+            <h2>Features</h2>
+            <ul>
+                <li>Feature 1: Easy Setup</li>
+                <li>Feature 2: Customizable Themes</li>
+                <li>Feature 3: Real-time Collaboration</li>
+            </ul>
+            <h2>Useful Document Syntax</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Markdown Syntax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Headings</td>
+                            <td><pre># H1, ## H2, ### H3</pre></td>
+                        </tr>
+                        <tr>
+                            <td>Bold Text</td>
+                            <td><pre>**Bold**</pre></td>
+                        </tr>
+                        <tr>
+                            <td>Italic Text</td>
+                            <td><pre>*Italic*</pre></td>
+                        </tr>
+                        <tr>
+                            <td>Lists</td>
+                            <td><pre>- Item 1
+- Item 2
+                            </pre></td>
+                        </tr>
+                        <tr>
+                            <td>Link</td>
+                            <td><pre>[Google](https://google.com)</pre></td>
+                        </tr>
+                        <tr>
+                            <td>Image</td>
+                            <td><pre>![Alt Text](Image_URL)</pre></td>
+                        </tr>
+                        <tr>
+                            <td>Code Block</td>
+                            <td><pre>```<br>Code here<br>```</pre></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="setup" class="section">
+            <h2>Setup Guide</h2>
+            <p>Follow these steps to set up your project:</p>
+            <ol>
+                <li>Step 1: Download the files</li>
+                <li>Step 2: Configure the environment</li>
+                <li>Step 3: Run the setup script</li>
+            </ol>
+        </section>
+
+        <section id="troubleshooting" class="section">
+            <h2>Troubleshooting</h2>
+            <p>If you encounter issues, refer to the troubleshooting guide.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Documentation Portal © 2025</p>
+        <p>Project Developer Prem Kumar</p>
+        <p>prem_kumar@fosteringlinux.com</p>
+    </footer>
+</body>
+</html>
