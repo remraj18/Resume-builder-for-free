@@ -1,109 +1,171 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // JavaScript for toggling the menu
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Menu Toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    // Background Slideshow
+    const images = [
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "https://images.unsplash.com/photo-1485217988980-11786ced9454",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7",
+      "https://images.unsplash.com/photo-1581090700227-1e37b190418e",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "https://images.unsplash.com/photo-1587613865762-d6ec9b0b1f21"
+    ];
+
+    let currentImage = 0;
+    function changeBackground() {
+      const header = document.getElementById("hero");
+      header.style.backgroundImage = `url('${images[currentImage]}')`;
+      currentImage = (currentImage + 1) % images.length;
+    }
+    setInterval(changeBackground, 3000);
+    window.onload = changeBackground;
+  </script>
 </head>
 
-<body class="m-0 p-0 font-sans bg-white">
+<body class="m-0 p-0 font-sans bg-white scroll-smooth">
 
-    <!-- Navigation -->
-    <nav class="bg-teal-600 text-white sticky top-0 p-4 flex justify-between items-center shadow-lg">
-        <!-- Hamburger Button -->
-        <button onclick="toggleMenu()" class="text-2xl cursor-pointer lg:hidden">
-            ☰
-        </button>
+  <!-- Navigation -->
+  <nav class="bg-teal-600 text-white sticky top-0 p-4 flex justify-between items-center shadow-lg z-50">
+    <button onclick="toggleMenu()" class="text-2xl cursor-pointer lg:hidden">☰</button>
+    <div class="text-2xl font-bold text-white">RESUME</div>
 
-        <!-- Logo Section -->
-        <div class="text-2xl font-bold text-white">RESUME</div>
+    <ul id="desktopMenu" class="hidden lg:flex space-x-10">
+      <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded" href="#">HOME</a></li>
+      <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded" href="#ABOUT-US">ABOUT US</a></li>
+      <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded" href="#RESUME">SIMPLE RESUME</a></li>
+      <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded" href="#edit">EDIT RESUME</a></li>
+      <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded" href="#CONTACT">CONTACT</a></li>
+    </ul>
 
-        <!-- Desktop Menu Links -->
-        <ul id="desktopMenu" class="hidden lg:flex space-x-10">
-            <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded transition-colors" href="#">HOME</a></li>
-            <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded transition-colors" href="#ABOUT-US">ABOUT US</a></li>
-            <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded transition-colors" href="#RESUME">SIMPLE RESUME</a></li>
-            <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded transition-colors" href="#edit">EDIT RESUME</a></li>
-            <li><a class="hover:bg-gray-200 hover:text-red-500 p-2 rounded transition-colors" href="#CONTACT">CONTACT</a></li>
-        </ul>
+    <ul id="mobileMenu" class="hidden flex-col absolute top-full left-0 bg-teal-600 w-full lg:hidden">
+      <li><a class="block text-white p-4 border-b border-gray-400" href="#">HOME</a></li>
+      <li><a class="block text-white p-4 border-b border-gray-400" href="#ABOUT-US">ABOUT US</a></li>
+      <li><a class="block text-white p-4 border-b border-gray-400" href="#RESUME">SIMPLE RESUME</a></li>
+      <li><a class="block text-white p-4 border-b border-gray-400" href="#edit">EDIT RESUME</a></li>
+      <li><a class="block text-white p-4" href="#CONTACT">CONTACT</a></li>
+    </ul>
+  </nav>
 
-        <!-- Mobile Menu (Hidden by Default) -->
-        <ul id="mobileMenu" class="hidden flex-col absolute top-full left-0 bg-teal-600 w-full lg:hidden">
-            <li><a class="block text-white p-4 border-b border-gray-400" href="#">HOME</a></li>
-            <li><a class="block text-white p-4 border-b border-gray-400" href="#ABOUT-US">ABOUT US</a></li>
-            <li><a class="block text-white p-4 border-b border-gray-400" href="#RESUME">SIMPLE RESUME</a></li>
-            <li><a class="block text-white p-4 border-b border-gray-400" href="#edit">EDIT RESUME</a></li>
-            <li><a class="block text-white p-4" href="#CONTACT">CONTACT</a></li>
-        </ul>
-    </nav>
+  <!-- Header Section -->
+  <header id="hero" class="relative h-screen flex flex-col lg:flex-row items-center justify-center bg-cover bg-center text-white transition-all duration-1000">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
-    <!-- Header Section -->
-    <header class="relative bg-cover bg-bottom h-screen bg-no-repeat" style="background-image: url('3.jpg');">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center text-white pb-24">
-            <h2 class="text-4xl lg:text-6xl text-red-500 mb-4">Create Resume using our AutoGenerate Templates</h2>
-            <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-4"></div>
-            <h1 class="text-5xl lg:text-6xl mb-6">RESUME CREATOR</h1>
-            <a href="index 1.html" class="inline-block bg-red-600 text-white px-6 py-3 rounded-full text-lg">CREATE RESUME NOW</a>
-        </div>
-    </header>
+    <!-- Left Content -->
+    <div class="relative w-full lg:w-1/2 text-center lg:text-left px-8 z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-red-400 mb-4">Create Resume using our AutoGenerate Templates</h2>
+      <div class="w-24 h-1 bg-teal-400 mb-6 mx-auto lg:mx-0"></div>
+      <h1 class="text-5xl font-extrabold mb-6">RESUME CREATOR</h1>
+      <a href="index 1.html" class="inline-block bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold shadow-lg">CREATE RESUME NOW</a>
+    </div>
 
-    <!-- About Us Section -->
-    <section id="ABOUT-US" class="container mx-auto py-16 px-4 text-center">
-        <h2 class="text-3xl font-bold text-red-700 mb-4">About Us</h2>
-        <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-6"></div>
-        <p class="text-lg text-gray-700 mb-4">Welcome to Resume Buldir, where we assist you in creating a stunning and professional resume. We believe that a resume is not just a document, but a representation of your identity and career direction. That's why we've made the process simple and convenient. Here, we explain the 6 easy steps to create and edit your resume:</p>
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 1: Set Up Your Profile:</h3>Our platform allows you to easily fill in your personal details, education, work experience, skills, and other important information. The process is simple and ensures you don’t miss any crucial details.</p>
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 2: Choose a Professional Template:</h3>We offer a variety of professionally designed templates. You can select the one that suits your style and career goals. Whether you prefer a modern design or a more traditional layout, we’ve got you covered.</p>
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 3: Create Your Resume:</h3>Based on the information you provide, our system automatically generates your resume. This ensures that your resume looks professional and visually appealing.
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 4: Edit Your Resume:</h3>If you need to make any changes, you can easily edit your resume. Our platform gives you full control to update any section of your resume whenever necessary.
+    <!-- Right Resume Image -->
+    <div class="relative w-full lg:w-1/2 flex justify-center mt-10 lg:mt-0 z-10">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Resume Preview"
+        class="rounded-2xl shadow-2xl w-4/5 max-w-md hover:scale-105 transition-transform duration-500 border-4 border-teal-500">
+    </div>
+  </header>
 
-</p>
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 5: Download Your Resume:</h3>Once you're satisfied with your resume, you can download it in PDF format. This ensures your resume is of high quality and looks great everywhere.</p>
-        <p class="text-lg text-gray-700 mb-4"><h3>Step 6: Share Your Resume</h3>Your resume is now ready! You can easily share it with potential employers or upload it to job portals to take the next step in your career.
+  <!-- About Us -->
+  <section id="ABOUT-US" class="container mx-auto py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold text-red-700 mb-4">About Us</h2>
+    <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-10"></div>
 
-At Resume Buldir, we support you every step of the way, so you can create a great resume and update it whenever needed. Start your journey today and get ready for new opportunities!
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 1: Profile Setup</h3>
+        <p>Start by filling your details including education, work experience, and achievements. Our clean design ensures every important detail is captured beautifully.</p>
+      </div>
 
-</p>
-</p>
-   
-    </section>
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 2: Choose Template</h3>
+        <p>Select from a wide range of templates crafted for various careers. Choose your favorite style, color, and structure that suits your personality and job type.</p>
+      </div>
 
-    <!-- Resume Section -->
-    <section id="RESUME" class="bg-gray-50 py-16 px-4">
-        <div class="container mx-auto text-center">
-            <h1 class="text-3xl font-bold text-red-700 mb-6">Simple Resume</h1>
-            <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-6"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <img src="premgan_page-0001.jpg" alt="Sample Resume 1" class="w-full h-auto rounded-lg shadow-lg">
-                <img src="2a.jpg" alt="Sample Resume 2" class="w-full h-auto rounded-lg shadow-lg">
-                <img src="Resume Maker_page-0001.jpg" alt="Sample Resume 3" class="w-full h-auto rounded-lg shadow-lg">
-                <img src="Resume Maker1_page-0001.jpg" alt="Sample Resume 3" class="w-full h-auto rounded-lg shadow-lg">
-                <img src="Resume Maker2_page-0001.jpg" alt="Sample Resume 3" class="w-full h-auto rounded-lg shadow-lg">
-                <img src="Resume Maker123_page-0001.jpg" alt="Sample Resume 3" class="w-full h-auto rounded-lg shadow-lg">
-            </div>
-        </div>
-    </section>
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 3: Auto Generate</h3>
+        <p>Once your details are ready, our system auto-generates a resume with perfect alignment and modern design ensuring recruiters notice you instantly.</p>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="CONTACT" class="bg-teal-50 py-16 px-4 text-center">
-        <h1 class="text-3xl font-bold text-gray-700 mb-6">Contact Us</h1>
-        <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-6"></div>
-        <p class="text-lg text-gray-700">sales@keenable.in</p>
-        <p class="text-lg text-gray-700">B149, Sector 63, Noida, India - 201301</p>
-        <p class="text-lg text-gray-700">Project Developer: Prem Kumar</p>
-        <p class="text-lg text-gray-700">Contact Us : 9570447294</p>
-    </section>
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 4: Edit Anytime</h3>
+        <p>Want to modify your resume? No problem! Edit, delete, or update any section anytime and your changes will be reflected immediately in real-time.</p>
+      </div>
+
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 5: Download PDF</h3>
+        <p>Download your resume in high-quality PDF format with just one click. Share it online or print it easily without losing formatting or quality.</p>
+      </div>
+
+      <div class="p-6 bg-white rounded-xl shadow-lg hover:bg-teal-100 transition">
+        <h3 class="font-bold text-teal-700 mb-2">Step 6: Share Globally</h3>
+        <p>Your resume is ready to share! Upload it to job sites or send directly to employers — our templates ensure you leave a lasting impression.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple Resume -->
+  <section id="RESUME" class="bg-gray-50 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h1 class="text-3xl font-bold text-red-700 mb-6">Simple Resume</h1>
+      <div class="w-32 h-1 bg-teal-600 mx-auto rounded mb-6"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <img src="premgan_page-0001.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+        <img src="2a.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+        <img src="Resume Maker_page-0001.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+        <img src="Resume Maker1_page-0001.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+        <img src="Resume Maker2_page-0001.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+        <img src="Resume Maker123_page-0001.jpg" class="rounded-xl shadow-lg hover:scale-105 transition">
+      </div>
+    </div>
+  </section>
+
+  <!-- Edit Resume -->
+  <section id="edit" class="bg-gradient-to-r from-teal-100 to-white py-20 px-6 flex flex-col lg:flex-row items-center justify-center gap-10">
+    <!-- Left Text -->
+    <div class="lg:w-1/2 text-center lg:text-left">
+      <h1 class="text-3xl font-bold text-red-700 mb-6">Edit Your Resume</h1>
+      <p class="text-lg text-gray-700 mb-4">Easily edit your resume anytime and keep it saved for future use. You can change any section — from experience to skills — and instantly download or share it again.</p>
+      <a href="#" class="inline-block bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full mt-4 transition">Start Editing</a>
+    </div>
+
+    <!-- Right Image -->
+    <div class="relative lg:w-1/2 flex justify-center">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Editable Resume" class="w-80 h-auto rounded-2xl shadow-2xl border-4 border-teal-400 hover:scale-105 transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Edit Icon"
+        class="absolute top-4 right-10 w-16 h-16 bg-white p-2 rounded-full shadow-lg hover:rotate-12 transition">
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="CONTACT" class="bg-teal-700 text-white py-16 px-4 text-center">
+    <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+    <div class="w-32 h-1 bg-white mx-auto rounded mb-6"></div>
+
+    <div class="max-w-xl mx-auto space-y-4 text-lg">
+      <p><strong>Email:</strong> sales@keenable.in</p>
+      <p><strong>Address:</strong> B149, Sector 63, Noida, India - 201301</p>
+      <p><strong>Project Developer:</strong> Prem Kumar</p>
+      <p><strong>Phone:</strong> 9570447294</p>
+    </div>
+
+    <div class="mt-8">
+      <a href="mailto:sales@keenable.in" class="bg-white text-teal-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Send Message</a>
+    </div>
+  </section>
 
 </body>
-
 </html>
